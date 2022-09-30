@@ -1,11 +1,7 @@
-import MyComponent from './app/app.component';
+import { Startup } from 'lib/core/Startup';
 
 function bootstrap() {
-    const component = new MyComponent();
-
-    // console.log(customElements);
-
-    const app = document.getElementById('app');
+    Startup.init();
 }
 
 bootstrap();

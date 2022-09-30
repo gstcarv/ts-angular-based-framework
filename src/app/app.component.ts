@@ -5,4 +5,6 @@ import template from 'src/app/app.template.html';
     selector: 'app-root',
     template,
 })
-export default class MyComponent {}
+export default class AppComponent {
+    state = 'hello world';
+}

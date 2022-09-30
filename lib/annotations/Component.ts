@@ -1,5 +1,6 @@
 import { ComponentRenderer } from 'lib/shadow/ComponentRenderer';
 import { ConstructorType } from 'lib/types/ConstructorType';
+import { singleton } from 'tsyringe';
 
 export type ComponentConfig = {
     selector: string;
@@ -8,7 +9,9 @@ export type ComponentConfig = {
 
 export function Component(config: ComponentConfig) {
     return <T>(target: ConstructorType<T>) => {
-        const componentRenderer = new ComponentRenderer(config);
+        singleton()(target);
+
+        const componentRenderer = new ComponentRenderer(config, target);
         componentRenderer.register();
 
         return target;
