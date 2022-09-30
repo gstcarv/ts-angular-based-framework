@@ -23,8 +23,11 @@ const webpackConfig: WebpackConfiguration = {
 
     module: {
         rules: [
-            // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
             { test: /\.tsx?$/, loader: 'ts-loader' },
+            {
+                test: /\.html$/i,
+                loader: 'html-loader',
+            },
         ],
     },
 
@@ -40,6 +43,15 @@ const webpackConfig: WebpackConfiguration = {
             },
         ]) as WebpackPluginFunction,
     ],
+
+    resolve: {
+        extensions: ['.ts', '.js', '.html'],
+
+        alias: {
+            lib: path.resolve(__dirname, 'lib'),
+            src: path.resolve(__dirname, 'src'),
+        },
+    },
 };
 
 export default webpackConfig;
